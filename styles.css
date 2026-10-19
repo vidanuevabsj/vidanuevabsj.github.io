@@ -76,11 +76,17 @@ h3 { margin: 0 0 .4rem; font-size: 1.1rem; }
 .dot.green { background: var(--green); }
 
 /* Horarios */
-.schedule { list-style: none; margin: 0; padding: 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-.schedule li { display: grid; grid-template-columns: 11rem 1fr auto; gap: 1rem; padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--line); align-items: center; }
-.schedule li:last-child { border-bottom: 0; }
-.day { font-weight: 700; color: var(--blue); }
-.time { color: var(--green); font-weight: 600; white-space: nowrap; }
+.schedule { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .6rem; }
+.day-col { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem .6rem; min-width: 0; }
+.day { margin: 0 0 .8rem; padding-bottom: .6rem; border-bottom: 2px solid var(--gold); font-size: .95rem; text-align: center; color: var(--blue); }
+.slots { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: .6rem; }
+.slot { display: grid; grid-template-columns: minmax(0, 1fr); gap: .3rem; min-width: 0; padding: .7rem .65rem; background: var(--bg); border-left: 4px solid var(--green); border-radius: 10px; font-size: .88rem; line-height: 1.35; }
+.slot.is-week { background: #fffdf6; border-left-color: var(--gold); }
+.slot .time { color: var(--green); font-weight: 700; font-size: .8rem; letter-spacing: .02em; }
+.slot.is-week .time { color: #9a6b00; }
+.slot .what { color: var(--blue); font-weight: 700; font-size: .95rem; }
+.slot .note { display: block; margin-top: .15rem; font-size: .78rem; color: var(--muted); font-style: italic; }
+.chip { justify-self: start; max-width: 100%; padding: .15rem .55rem; border-radius: 999px; background: var(--gold-soft); border: 1px solid var(--gold); color: #7a5300; font-size: .72rem; font-weight: 700; line-height: 1.4; }
 
 /* Cultos */
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
@@ -111,6 +117,9 @@ footer { border-top: 1px solid var(--line); padding: 1.6rem 0; color: var(--mute
   .hero-inner, .split { grid-template-columns: 1fr; }
   .hero-logo { order: -1; }
   .hero-logo img { width: 200px; }
-  .schedule li { grid-template-columns: 1fr; gap: .2rem; }
   .section { padding: 3.5rem 0; }
+}
+
+@media (max-width: 999px) {
+  .schedule { grid-template-columns: 1fr; }
 }
